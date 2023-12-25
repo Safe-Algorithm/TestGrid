@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "app"
+version = "0.1.0"
+description = "Penny's sendgrid status event API"
+authors = ["smart-programmer <almuwallad.ammar@gmail.com.co>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.11"
+fastapi = "0.104.1"
+uvicorn = {extras = ["standard"], version = "0.24.0.post1"}
+beanie = "1.23.6"
+motor = "3.3.2"
+pydantic = {extras = ["email"], version = "2.5.2"}
+starlette = "0.27.0"
+pydantic-settings = "2.1.0"
+pyjwt = "2.8.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "7.4.3"
+pymongo-inmemory = "0.4.0"
+httpx = "0.26.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

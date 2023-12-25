@@ -1,0 +1,8 @@
+version: "3.9"
+
+services:
+  testgrid-api:
+    build: .
+    env_file: ./base.env
+    ports:
+      - 8000:80
