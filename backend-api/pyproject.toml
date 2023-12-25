@@ -6,7 +6,7 @@ authors = ["smart-programmer <almuwallad.ammar@gmail.com.co>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "3.10.12"
+python = ">=3.10,<3.11"
 fastapi = "0.104.1"
 uvicorn = {extras = ["standard"], version = "0.24.0.post1"}
 beanie = "1.23.6"
