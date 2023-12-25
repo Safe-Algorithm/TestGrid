@@ -13,7 +13,7 @@ This guide will help you set up and run the backend FastAPI app. Make sure you h
 1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/your-username/repo-name.git
+   git clone https://github.com/Safe-Algorithm/TestGrid.git
    cd TestGrid/backend-api
    ```
 
@@ -30,7 +30,7 @@ This guide will help you set up and run the backend FastAPI app. Make sure you h
    Copy the provided `env.example` file to `base.env`. This file contains necessary environment variables.
 
    ```bash
-   cp env.example ../base.env
+   cp env.example base.env
    ```
 
 ## Running the App
@@ -38,7 +38,7 @@ This guide will help you set up and run the backend FastAPI app. Make sure you h
 To start the FastAPI app, run the following command:
 
 ```bash
-uvicorn app.main:app --reload --port 5007 --env-file ../base.env
+uvicorn app.main:app --reload --port 5007 --env-file base.env
 ```
 
 This command starts the server and sets it up to reload on code changes. You can access the app at [http://localhost:5007](http://localhost:5007).
