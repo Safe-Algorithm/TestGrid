@@ -33,6 +33,14 @@ This guide will help you set up and run the backend FastAPI app. Make sure you h
    cp env.example base.env
    ```
 
+4. **Spawning shell**
+
+   activate a shell using the project's virtual environment.
+
+   ```bash
+   poetry shell
+   ```
+
 ## Running the App
 
 To start the FastAPI app, run the following command:
