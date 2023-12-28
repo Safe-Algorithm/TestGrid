@@ -4,11 +4,11 @@ A cloud-based SAAS platform for load and penetration testing
 
 ---
 
-# FastAPI backend api Setup and Run Guide
+# FastAPI backend API Setup and Run Guide
 
 This guide will help you set up and run the backend FastAPI app. Make sure you have Python 3.10.12 installed on your system before proceeding.
 
-## Setup Instructions
+## Backend Setup Instructions
 
 1. **Clone the Repository**
 
@@ -56,3 +56,24 @@ This command starts the server and sets it up to reload on code changes. You can
 - Remember to modify environment variables in `base.env` as needed for your specific setup.
 
 ---
+
+## Frontend Setup Instructions
+
+1. **Clone the Repository**
+
+   ```bash
+   git clone https://github.com/Safe-Algorithm/TestGrid.git
+   ```
+
+2. **Change Current Directory**
+   ```bash
+   cd frontend
+   ```
+3. **Install Dependencies**
+   ```bash
+   npm install
+   ```
+4. **Running the App**
+   ```bash
+   npm run dev
+   ```
