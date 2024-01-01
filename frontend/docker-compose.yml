@@ -1,0 +1,7 @@
+version: "3.9"
+
+services:
+  testgrid-frontend:
+    build: .
+    ports:
+      - 8001:5173
