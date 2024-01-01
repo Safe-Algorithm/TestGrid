@@ -35,7 +35,7 @@ This guide will help you set up and run the backend FastAPI app. Make sure you h
 
 4. **Spawning shell**
 
-   activate a shell using the project's virtual environment.
+   activate a shell using the project's virtual environment. do this before running any poetry commands or running any tools installed with poetry such as `uvicorn`
 
    ```bash
    poetry shell
@@ -73,7 +73,13 @@ This command starts the server and sets it up to reload on code changes. You can
    ```bash
    npm install
    ```
-4. **Running the App**
-   ```bash
-   npm run dev
-   ```
+
+## Running the App
+
+To start the frontend vite app, run the following command:
+
+```bash
+npm run dev
+```
+
+This command starts the server. You can access the app at [http://localhost:5173](http://localhost:5173).
