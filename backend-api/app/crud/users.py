@@ -1,5 +1,5 @@
 from beanie.operators import Or
-from app.schemas.users import BaseUser, UserInRegister
+from app.schemas.users import UserOutDefault, UserInRegister, UserInLogin
 from app.models.users import UserDocument
 from app.logs.log_conf import Logger
 
@@ -17,15 +17,26 @@ class UserCrud:
 
 
     @classmethod
-    async def get_user_username_or_email(cls, user: BaseUser) -> UserDocument | None:
+    async def get_user_by_username_or_email(cls, user: UserOutDefault) -> UserDocument | None:
         """retrieve user with either email or username
 
-        :params user(BaseUser): user to retrieve
+        :params user(UserOutDefault): user to retrieve
 
         :return: UserDocument or None
         """
         logger.info(f'retrieving user with email: {user.email}, or username: {user.username}')
         return await UserDocument.find_one(Or(UserDocument.email == user.email, UserDocument.username == user.username))
+    
+    @classmethod
+    async def get_user_by_email(cls, user: UserInLogin) -> UserDocument | None:
+        """retrieve user with email
+
+        :params user(UserInLogin): user to retrieve
+
+        :return: UserDocument or None
+        """
+        logger.info(f'retrieving user with email: {user.email}')
+        return await UserDocument.find_one(UserDocument.email == user.email)
     
     
    

@@ -12,6 +12,7 @@ class Settings(BaseSettings):
     MONGO_DB_NAME: str
 
     JWT_SECRET: str
+    ACCESS_TOKEN_EXPIRE_MINUTES: int = 10
     API_KEYS: list[str]
     DEBUG_MODE: bool
     BACKEND_CORS_ORIGINS: list[str] = []
