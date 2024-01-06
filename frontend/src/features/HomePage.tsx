@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
 
 function HomePage() {
-  const accessToken = Cookies.get("accessToken");
+  
   return (
     <div>
       <h1>HomePage</h1>
