@@ -8,13 +8,17 @@ function Login() {
   const port = import.meta.env.VITE_SERVER_PORT;
   const API_KEY = import.meta.env.VITE_API_KEY;
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState(false);
+  let email = "";
+  let password = "";
+  const [infoError, setInfoError] = useState(false);
+  const [unexpectedError, setUnexpectedError] = useState(false);
   const navigate = useNavigate();
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    email = e.target.email.value;
+    password = e.target.password.value;
+
     if (email && password) {
       const user = {
         email,
@@ -30,7 +34,7 @@ function Login() {
         body: JSON.stringify(user),
       });
 
-      if (response.status === 401) setError(true);
+      if (response.status === 401) setInfoError(true);
       else if (response.status === 200) {
         const data = await response.json();
         const accessToken = data.access_token;
@@ -39,7 +43,7 @@ function Login() {
 
         navigate("/", { replace: true });
       } else {
-        console.log("Unknown Error");
+        setUnexpectedError(true);
       }
     }
   }
@@ -47,26 +51,20 @@ function Login() {
     <div>
       <form onSubmit={handleSubmit}>
         <div>
-          {error && <p>Incorrect email or password. Please try again</p>}
+          {unexpectedError && <p>Something went wrong! try again.</p>}
+          {infoError && <p>Incorrect email or password. Please try again</p>}
           <label htmlFor="email">Email Address </label>
           <input
             type="email"
             id="email"
+            name="email"
             placeholder="user@example.com"
-            onChange={(e) => setEmail(e.target.value)}
-            value={email}
             required
           />
         </div>
         <div>
           <label htmlFor="password">Password </label>
-          <input
-            type="password"
-            id="password"
-            onChange={(e) => setPassword(e.target.value)}
-            value={password}
-            required
-          />
+          <input type="password" id="password" name="password" required />
         </div>
         <div>
           <Button>Login</Button>
