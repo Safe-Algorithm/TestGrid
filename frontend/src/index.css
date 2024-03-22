@@ -1,3 +1,33 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --primary: #0867ff;
+  --secondary: #c1ff00;
+}
+
+.active {
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.active::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 70%;
+  height: 4px;
+  background-color: var(--secondary);
+}
+
+.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 70%;
+  width: 30%;
+  height: 4px;
+  background-color: var(--primary);
+}
