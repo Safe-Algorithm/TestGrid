@@ -62,6 +62,7 @@ const Register = () => {
   };
   return (
     <>
+      <div className="bg-[url('src/assets/background.svg')] bg-repeat w-full h-full absolute top-0 left-0"></div>
       <main className="relative min-h-full">
         <div className="hidden md:block fixed inset-x-0 bottom-0 h-8 bg-green w-full"></div>
         <Container className="flex-grow">
@@ -108,7 +109,6 @@ const Register = () => {
         src="src/assets/desktop illustration.png"
         className="hidden md:block absolute md:w-96 bottom-0 md:right-2 xl:w-auto xl:right-6"
       />
-      <div className="bg-[url('src/assets/background.svg')] bg-repeat w-full h-full absolute z-10 top-0 left-0"></div>
     </>
   );
 };

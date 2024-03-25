@@ -1,7 +1,10 @@
 import { NavLink } from "react-router-dom";
 import Logo from "./Logo";
 
-export default function NavBar() {
+interface NavBarProps {
+  isLogin?: boolean;
+}
+export default function NavBar({ isLogin = false }: NavBarProps) {
   return (
     <div className="md:flex">
       <Logo />
@@ -20,7 +23,11 @@ export default function NavBar() {
             <NavLink to="/aboutus">About Us</NavLink>
           </li>
           <li>
-            <NavLink to="/register">Signup</NavLink>
+            {
+              <NavLink to={`/${isLogin ? "login" : "register"}`}>
+                {isLogin ? "Login" : "Signup"}
+              </NavLink>
+            }
           </li>
         </ul>
       </div>
