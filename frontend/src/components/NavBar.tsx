@@ -6,9 +6,9 @@ interface NavBarProps {
 }
 export default function NavBar({ isLogin = false }: NavBarProps) {
   return (
-    <div className="md:flex">
+    <nav className="md:flex">
       <Logo />
-      <div className="flex-1">
+      <div className="md:flex-auto xl:flex-1">
         <ul className="hidden md:flex md:flex-row md:items-center md:justify-between font-roboto text-blue m-6">
           <li>
             <NavLink to="/">Home</NavLink>
@@ -17,7 +17,7 @@ export default function NavBar({ isLogin = false }: NavBarProps) {
             <NavLink to="/pricing">Pricing</NavLink>
           </li>
           <li>
-            <NavLink to="/services">Services</NavLink>
+            <NavLink to="/features">Features</NavLink>
           </li>
           <li>
             <NavLink to="/aboutus">About Us</NavLink>
@@ -31,6 +31,6 @@ export default function NavBar({ isLogin = false }: NavBarProps) {
           </li>
         </ul>
       </div>
-    </div>
+    </nav>
   );
 }

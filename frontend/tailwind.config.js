@@ -7,6 +7,8 @@ export default {
       colors: {
         blue: "#0867FF",
         green: "#C1FF00",
+        "blue-shadow": "#3E00FF",
+        "blue-description": "#3080FF",
       },
       borderWidth: {
         32: "32px",

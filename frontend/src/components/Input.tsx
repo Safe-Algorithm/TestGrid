@@ -7,7 +7,7 @@ interface InputProps {
 function Input({ type, name, required = false, placeholder }: InputProps) {
   return (
     <input
-      className="border-4 border-blue w-80 p-2 m-3 shadow-custom shadow-green focus:outline-none"
+      className="border-4 border-blue w-80 p-2 m-3 shadow-custom shadow-green focus:outline-none focus:shadow-none"
       type={type}
       name={name}
       required={required}

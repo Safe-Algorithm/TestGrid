@@ -11,7 +11,7 @@ function Button({ type, onClick, children }: ButtonProps) {
     <button
       type={type}
       onClick={onClick}
-      className="w-80 p-2 m-3 text-blue text-2xl font-bold bg-green shadow-custom shadow-blue "
+      className="w-80 p-2 m-3 text-blue text-2xl font-bold bg-green shadow-custom shadow-blue active:shadow-none"
     >
       {children}
     </button>

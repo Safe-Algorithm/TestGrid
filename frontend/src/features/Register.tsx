@@ -67,7 +67,7 @@ const Register = () => {
         <div className="hidden md:block fixed inset-x-0 bottom-0 h-8 bg-green w-full"></div>
         <Container className="flex-grow">
           <img
-            src="src/assets/mobile illustration.png"
+            src="src/assets/register-mobile-illustration.svg"
             className=" mx-auto md:hidden"
           />
           <NavBar />
@@ -106,8 +106,8 @@ const Register = () => {
         </Container>
       </main>
       <img
-        src="src/assets/desktop illustration.png"
-        className="hidden md:block absolute md:w-96 bottom-0 md:right-2 xl:w-auto xl:right-6"
+        src="src/assets/register-desktop-illustration.svg"
+        className="hidden md:block absolute md:w-96 bottom-0 md:right-2 xl:w-1/4 xl:right-6"
       />
     </>
   );
