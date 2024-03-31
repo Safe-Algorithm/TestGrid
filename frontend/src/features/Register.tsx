@@ -1,4 +1,9 @@
 import { useState } from "react";
+import Container from "../components/Container";
+import NavBar from "../components/NavBar";
+import Input from "../components/Input";
+import Button from "../components/Button";
+import { Link } from "react-router-dom";
 
 const host: string = import.meta.env.VITE_SERVER_HOST;
 const port: string = import.meta.env.VITE_SERVER_PORT;
@@ -57,28 +62,53 @@ const Register = () => {
   };
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          name="email"
-          required
-          placeholder="user@example.com"
-        />
-        <input
-          type="username"
-          name="username"
-          required
-          placeholder="@username"
-        />
-        <input
-          type="password"
-          name="password"
-          required
-          placeholder="password"
-        />
-        <button type="submit">register</button>
-      </form>
-      {isError && <p>{error}</p>}
+      <div className="bg-[url('src/assets/background.svg')] bg-repeat w-full h-full absolute top-0 left-0"></div>
+      <main className="relative min-h-full">
+        <div className="hidden md:block fixed inset-x-0 bottom-0 h-8 bg-green w-full"></div>
+        <Container className="flex-grow">
+          <img
+            src="src/assets/register-mobile-illustration.svg"
+            className=" mx-auto md:hidden"
+          />
+          <NavBar />
+          <section className="flex-grow">
+            <form
+              onSubmit={handleSubmit}
+              className="flex flex-col items-center md:items-start"
+            >
+              {isError && (
+                <p className=" bg-red-200 text-red-600 border-l-8 border-red-600 font-roboto font-bold p-4 m-3">
+                  {error}
+                </p>
+              )}
+              <Input type="email" name="email" required placeholder="Email" />
+              <Input
+                type="username"
+                name="username"
+                required
+                placeholder="Username"
+              />
+              <Input
+                type="password"
+                name="password"
+                required
+                placeholder="Password"
+              />
+              <Button type="submit">Signup</Button>
+              <Link
+                to="/login"
+                className=" text-blue underline font-bold font-roboto m-5"
+              >
+                I already have an account
+              </Link>
+            </form>
+          </section>
+        </Container>
+      </main>
+      <img
+        src="src/assets/register-desktop-illustration.svg"
+        className="hidden md:block absolute md:w-96 bottom-0 md:right-2 xl:w-1/4 xl:right-6"
+      />
     </>
   );
 };
