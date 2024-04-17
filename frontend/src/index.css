@@ -10,3 +10,6 @@
 .card-shadow {
   box-shadow: 5px 5px #0867ff;
 }
+.stroke {
+  -webkit-text-stroke: 1px #2a2a2a;
+}
