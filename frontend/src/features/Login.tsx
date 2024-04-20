@@ -86,7 +86,7 @@ function Login() {
               <Button type="submit">Login</Button>
 
               <Link
-                to="/login"
+                to="/signup"
                 className=" text-blue underline font-bold font-roboto m-5"
               >
                 I don't have an account

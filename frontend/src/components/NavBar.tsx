@@ -24,7 +24,7 @@ export default function NavBar({ isLogin = false }: NavBarProps) {
           </li>
           <li>
             {
-              <NavLink to={`/${isLogin ? "login" : "register"}`}>
+              <NavLink to={`/${isLogin ? "login" : "signup"}`}>
                 {isLogin ? "Login" : "Signup"}
               </NavLink>
             }
