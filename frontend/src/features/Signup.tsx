@@ -9,7 +9,7 @@ const host: string = import.meta.env.VITE_SERVER_HOST;
 const port: string = import.meta.env.VITE_SERVER_PORT;
 const API_KEY: string = import.meta.env.VITE_API_KEY;
 
-const Register = () => {
+const Signup = () => {
   const [error, setError] = useState("");
   const [isError, setIsError] = useState(false);
   const user = {
@@ -20,7 +20,7 @@ const Register = () => {
 
   const fetchAPI = async () => {
     try {
-      const res = await fetch(`http://${host}:${port}/api/v1/auth/register`, {
+      const res = await fetch(`http://${host}:${port}/api/v1/auth/signup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -113,4 +113,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Signup;
