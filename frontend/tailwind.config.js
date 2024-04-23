@@ -15,6 +15,7 @@ export default {
       },
       boxShadow: {
         custom: "6px 6px 0 0px var(--tw-shadow-color)",
+        "custom-features": "4px 4px 0 0px var(--tw-shadow-color)",
       },
 
       fontFamily: {
