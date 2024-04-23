@@ -1,12 +1,7 @@
-import { Link } from "react-router-dom";
+import Container from "../components/Container";
+import Footer from "../components/Footer";
 
 function HomePage() {
-  return (
-    <div>
-      <h1>HomePage</h1>
-
-      <Link to="/login">Login</Link>
-    </div>
-  );
+  return <Footer />;
 }
 export default HomePage;
