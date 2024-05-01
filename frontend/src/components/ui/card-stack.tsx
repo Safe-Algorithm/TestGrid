@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import SectionHeading from "../SectionHeading";
 
 let interval: any;
-
 type Card = {
   id: number;
   name: string;
@@ -21,15 +20,25 @@ export const CardStack = ({
   offset?: number;
   scaleFactor?: number;
 }) => {
-  const CARD_OFFSET = offset || 18;
+  const [width, setWidth] = useState(window.innerWidth);
+  window.addEventListener("load", () => {
+    setWidth(window.innerWidth);
+  });
+  window.addEventListener("resize", () => {
+    setWidth(window.innerWidth);
+  });
+  let CARD_OFFSET = offset || 25;
+
   const SCALE_FACTOR = scaleFactor || 0.06;
   const [cards, setCards] = useState<Card[]>(items);
-
+  if (width <= 640) {
+    CARD_OFFSET = 0;
+    console.log(`offset ${CARD_OFFSET}`);
+  }
   useEffect(() => {
-    startFlipping();
-
-    return () => clearInterval(interval);
-  }, []);
+    // startFlipping();
+    // return () => clearInterval(interval);
+  }, [width]);
   const startFlipping = () => {
     interval = setInterval(() => {
       setCards((prevCards: Card[]) => {
@@ -41,21 +50,20 @@ export const CardStack = ({
   };
 
   return (
-    <div className="relative -left-[-11px] mt-16 h-60 w-10/12 m-auto sm:w-full md:h-60 md:w-96">
+    <div className="relative flex justify-center mt-16 h-60 w-10/12 m-auto md:h-60 md:w-96">
       {cards.map((card, index) => {
         if (index == 0) {
           return (
             <motion.div
               key={card.id}
-              className="absolute border border-blue border-[3px] bg-white h-60 w-full md:h-60 md:w-96 p-4 shadow-xl  shadow-black/[0.1] dark:shadow-white/[0.05] flex flex-col justify-between"
+              className="absolute border border-blue border-[3px] bg-white h-60 w-[25rem] p-4 shadow-xl  shadow-black/[0.1] dark:shadow-white/[0.05] flex flex-col justify-between"
               style={{
                 transformOrigin: "top center right",
-                right: -25,
               }}
               animate={{
-                top: index * -CARD_OFFSET,
-                right: index * -25,
                 scale: 1 - index * SCALE_FACTOR, // decrease scale for cards that are behind
+                right: -CARD_OFFSET * index,
+                top: -20 * index,
                 zIndex: cards.length - index, //  decrease z-index for the cards that are behind
               }}
             >
@@ -70,15 +78,16 @@ export const CardStack = ({
           return (
             <motion.div
               key={card.id}
-              className="absolute border border-black border-[3px] bg-white h-60 w-full md:h-60 md:w-96 p-4 shadow-xl  shadow-black/[0.1] dark:shadow-white/[0.05] flex flex-col justify-between"
+              className="absolute border border-black border-[3px] bg-white h-60 w-[25rem] p-4 shadow-xl  shadow-black/[0.1] dark:shadow-white/[0.05] flex flex-col justify-between"
               style={{
                 transformOrigin: "top center right",
-                right: -25,
+                right: -25 * index,
+                top: -20 * index,
               }}
               animate={{
-                top: index * -CARD_OFFSET,
-                right: index * -25,
                 scale: 1 - index * SCALE_FACTOR, // decrease scale for cards that are behind
+                right: -25 * index,
+                top: -20 * index,
                 zIndex: cards.length - index, //  decrease z-index for the cards that are behind
               }}
             >
