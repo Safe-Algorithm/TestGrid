@@ -1,5 +1,6 @@
 import Container from "../components/Container";
 import Features from "../components/Features";
+import Footer from "../components/Footer";
 
 function HomePage() {
   return (
@@ -7,6 +8,7 @@ function HomePage() {
       <Container>
         <Features />
       </Container>
+      <Footer />
     </div>
   );
 }
