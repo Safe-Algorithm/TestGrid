@@ -1,11 +1,12 @@
-import { Link } from "react-router-dom";
+import Container from "../components/Container";
+import Features from "../components/Features";
 
 function HomePage() {
   return (
     <div>
-      <h1>HomePage</h1>
-
-      <Link to="/login">Login</Link>
+      <Container>
+        <Features />
+      </Container>
     </div>
   );
 }

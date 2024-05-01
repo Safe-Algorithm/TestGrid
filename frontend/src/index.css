@@ -32,3 +32,8 @@
   height: 4px;
   background-color: var(--primary);
 }
+@media only screen and (min-width: 1024px) {
+  .leading-12 {
+    line-height: 3rem !important;
+  }
+}
