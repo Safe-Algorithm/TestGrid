@@ -1,34 +1,26 @@
 import { useState } from "react";
-import Cookies from "js-cookie";
-import Button from "../components/Button";
-import { Link, useNavigate } from "react-router-dom";
 import Container from "../components/Container";
 import NavBar from "../components/NavBar";
 import Input from "../components/Input";
+import Button from "../components/Button";
+import { Link } from "react-router-dom";
 
-function Login() {
-  const host = import.meta.env.VITE_SERVER_HOST;
-  const port = import.meta.env.VITE_SERVER_PORT;
-  const API_KEY = import.meta.env.VITE_API_KEY;
+const host: string = import.meta.env.VITE_SERVER_HOST;
+const port: string = import.meta.env.VITE_SERVER_PORT;
+const API_KEY: string = import.meta.env.VITE_API_KEY;
 
-  let email = "";
-  let password = "";
+const Signup = () => {
   const [error, setError] = useState("");
   const [isError, setIsError] = useState(false);
-  const navigate = useNavigate();
+  const user = {
+    email: String,
+    username: String,
+    password: String,
+  };
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    email = e.target.email.value;
-    password = e.target.password.value;
-
-    if (email && password) {
-      const user = {
-        email,
-        password,
-      };
-
-      const response = await fetch(`http://${host}:${port}/api/v1/auth/login`, {
+  const fetchAPI = async () => {
+    try {
+      const res = await fetch(`http://${host}:${port}/api/v1/auth/signup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -37,22 +29,37 @@ function Login() {
         body: JSON.stringify(user),
       });
 
-      if (response.status === 401) {
+      /*
+       returns 409 in the following error scenarios:
+       - username is exist
+       - email is exist
+       - username is missing
+      */
+      if (res.status === 409) {
+        setError("Username or Email already exist");
         setIsError(true);
-        setError("Invalid email or password. Please try again");
-      } else if (response.status === 200) {
-        const data = await response.json();
-        const accessToken = data.access_token;
-
-        Cookies.set("accessToken", accessToken, { expires: 2 });
-
-        navigate("/", { replace: true });
+      } else if (res.status === 422) {
+        // if email is missing
+        setError("Invalid email!");
+        setIsError(true);
       } else {
+        setError("");
         setIsError(true);
-        setError("Something went wrong! Please try again");
       }
+    } catch (error) {
+      setError("Something went wrong!");
+      throw new Error("Something went wrong!");
     }
-  }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    user.email = e.target.email.value;
+    user.username = e.target.username.value;
+    user.password = e.target.password.value;
+
+    await fetchAPI();
+  };
   return (
     <>
       <div className="bg-[url('src/assets/background.svg')] bg-repeat w-full h-full absolute top-0 left-0"></div>
@@ -63,7 +70,7 @@ function Login() {
             src="src/assets/register-mobile-illustration.svg"
             className=" mx-auto md:hidden"
           />
-          <NavBar isLogin={true} />
+          <NavBar />
           <section className="flex-grow">
             <form
               onSubmit={handleSubmit}
@@ -74,22 +81,25 @@ function Login() {
                   {error}
                 </p>
               )}
-
-              <Input type="email" name="email" placeholder="Email" required />
+              <Input type="email" name="email" required placeholder="Email" />
+              <Input
+                type="username"
+                name="username"
+                required
+                placeholder="Username"
+              />
               <Input
                 type="password"
                 name="password"
-                placeholder="Password"
                 required
+                placeholder="Password"
               />
-
-              <Button type="submit">Login</Button>
-
+              <Button type="submit">Signup</Button>
               <Link
-                to="/signup"
+                to="/login"
                 className=" text-blue underline font-bold font-roboto m-5"
               >
-                I don't have an account
+                I already have an account
               </Link>
             </form>
           </section>
@@ -101,5 +111,6 @@ function Login() {
       />
     </>
   );
-}
-export default Login;
+};
+
+export default Signup;

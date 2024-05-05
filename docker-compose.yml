@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  testgrid-frontend:
+    build: ./frontend
+    ports:
+      - 8001:5173
+
+  testgrid-api:
+    build: ./backend-api
+    env_file: ./backend-api/base.env
+    ports:
+      - 8000:80

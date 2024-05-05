@@ -8,7 +8,7 @@ export function Reviews() {
     <section className="mt-16 relative w-full">
       <SectionHeading title="Reviews" />
       <div className="w-10/12 w-full md:w-10/12 m-auto flex justify-center">
-        <span className="h-24 top-[138px] left-0 border border-y-1 border-x-0 border-black bg-green w-full absolute"></span>
+        <span className="h-24 top-[170px] md:top-[193px] left-0 border border-y-1 border-x-0 border-black bg-green w-full absolute"></span>
         <CardStack items={CARDS} />
       </div>
     </section>
