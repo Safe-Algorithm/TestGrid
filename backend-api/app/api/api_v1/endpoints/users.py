@@ -14,7 +14,7 @@ logger = Logger(__name__)
 router = APIRouter()
 
 
-@router.post("/register",
+@router.post("/signup",
             status_code=status.HTTP_200_OK,
             description="registers a a new user")
 async def register_user(user: Annotated[UserInRegister, Body(...)]):
