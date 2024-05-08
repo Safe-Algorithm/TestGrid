@@ -4,6 +4,10 @@ interface ContainerProps {
   className?: string;
 }
 function Container({ children, className }: ContainerProps) {
-  return <div className={`w-10/12 m-auto mt-8  ${className}`}>{children}</div>;
+  return (
+    <div className={`p-5 sm:p-0 sm:w-10/12 m-auto mt-2  ${className}`}>
+      {children}
+    </div>
+  );
 }
 export default Container;

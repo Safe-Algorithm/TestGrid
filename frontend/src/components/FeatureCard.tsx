@@ -1,4 +1,6 @@
 import React, { ReactNode } from "react";
+import Paragraph from "./Paragraph";
+import Heading from "./Heading";
 
 interface FeatureCardProps {
   title: string;
@@ -13,12 +15,8 @@ export default function FeatureCard({
   return (
     <div className="p-4 border-4 rounded-md border-blue shadow-custom-features shadow-green">
       <img src={icon} className="inline-block mr-4 w-10 md:w-12 lg:w-14"></img>
-      <h2 className="text-lg md:text-2xl xl:text-4xl text-blue font-semibold inline">
-        {title}
-      </h2>
-      <p className="mt-4 md:text-xl xl:text-3xl !leading-8 md:!leading-10 leading-12">
-        {children}
-      </p>
+      <Heading className="font-bold text-blue inline">{title}</Heading>
+      <Paragraph className="mt-4">{children}</Paragraph>
     </div>
   );
 }
