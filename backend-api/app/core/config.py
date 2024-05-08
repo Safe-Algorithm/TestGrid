@@ -1,4 +1,4 @@
-from pydantic import EmailStr, MongoDsn, validator, field_validator
+from pydantic import EmailStr, MongoDsn, validator, field_validator, AnyUrl
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 from app.logs.log_conf import Logger
@@ -20,6 +20,10 @@ class Settings(BaseSettings):
     PROJECT_NAME: str = "Default Project"
 
     ENABLE_AUTH_FEATURE: bool = True
+
+    CELERY_BROKER: AnyUrl
+    CELERY_RESULT_BACKEND: AnyUrl
+    RESULT_BACKEND_QUEUE: str
 
     model_config = SettingsConfigDict(case_sensitive=True)
 
