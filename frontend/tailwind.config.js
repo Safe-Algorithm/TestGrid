@@ -7,6 +7,8 @@ export default {
       colors: {
         blue: "#0867FF",
         green: "#C1FF00",
+        black: "#2a2a2a",
+        white: "#ffffff",
         "blue-shadow": "#3E00FF",
         "blue-description": "#3080FF",
       },
@@ -21,6 +23,10 @@ export default {
       fontFamily: {
         roboto: ["Roboto", "sans-serif"],
       },
+      borderRadius: {
+        default: "5px",
+      },
+      fontSize: {},
     },
   },
   plugins: [],

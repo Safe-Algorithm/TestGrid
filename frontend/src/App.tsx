@@ -3,7 +3,7 @@ import HomePage from "./features/HomePage";
 import Login from "./features/Login";
 import Signup from "./features/Signup";
 import TestOptions from "./features/TestOptions";
-
+import "./index.css";
 function App() {
   return (
     <BrowserRouter>
