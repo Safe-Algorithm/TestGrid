@@ -25,13 +25,13 @@ async def register_user(user: Annotated[UserInRegister, Body(...)]):
     try:
         await UserCrud.insert_user(user)
     except Exception as e:
-        logger.error(f"failed to insert user {user} in db")
+        logger.error(f"failed to insert user {user} in db error: {e}")
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail='failed inserting user in db')
     
 @router.post("/login",
             status_code=status.HTTP_200_OK,
             description="retrieve an access token for a user")
-async def register_user(user: Annotated[UserInLogin, Body(...)]) -> AccessToken:
+async def login_user(user: Annotated[UserInLogin, Body(...)]) -> AccessToken:
     userFromDB: UserDocument = await UserCrud.get_user_by_email(user)
     if not userFromDB:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail='email doesn\'t exist')
@@ -41,6 +41,6 @@ async def register_user(user: Annotated[UserInLogin, Body(...)]) -> AccessToken:
     user_token_info: TokenUser = TokenUser(**userFromDB.model_dump())
     user_token_info.created_at = user_token_info.created_at.isoformat()
     user_token_info.updated_at = user_token_info.updated_at.isoformat()
-    access_token = await create_access_token({'sub': userFromDB.email, 'user': user_token_info.model_dump()})
+    access_token = await create_access_token({'sub': user_token_info.email, 'user': user_token_info.model_dump()})
     return AccessToken(access_token=access_token)
     

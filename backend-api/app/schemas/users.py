@@ -14,7 +14,6 @@ class UserInLogin(BaseUser):
     password: str
 
 class UserInRegister(UserOutDefault):
-    username: str
     password: str
 
 class TokenUser(UserOutDefault):
