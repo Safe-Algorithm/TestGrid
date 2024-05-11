@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, status, Path, HTTPException, Body, Security
+from fastapi import APIRouter, Depends, status, Path, HTTPException, Body, Security, Query
 
 from celery.result import AsyncResult
 
@@ -41,17 +41,21 @@ async def run_task(task_run_request: Annotated[TaskRunRequest, Body(...)],
 @router.get("/user-tests",
             status_code=status.HTTP_200_OK,
             description="fetch tasks by user id")
-async def fetch_tasks_with_user_id(user: Annotated[TokenUser, Depends(get_authenticated_user)]) -> list[TaskShortView]:
-    tasks: list[TaskShortView] = await TaskCrud.get_tasks_by_user_id(user)
+async def fetch_tasks_with_user_id(
+    user: Annotated[TokenUser, Depends(get_authenticated_user)],
+    skip: Annotated[int, Query(...)] = 0,
+    limit: Annotated[int, Query(...)] = 1000000,
+    ) -> list[TaskShortView]:
+    tasks: list[TaskShortView] = await TaskCrud.get_tasks_by_user_id(user, skip=skip, limit=limit)
     return tasks
 
 @router.get("/{task_celery_id}",
             status_code=status.HTTP_200_OK,
             description="fetch a task by its UUID")
 async def fetch_task_with_celery_id(
-                task_celery_id: Annotated[UUID4, Path(...)],
-                user: Annotated[TokenUser, Depends(get_authenticated_user)]
-                ) -> TaskRunDocument:
+    task_celery_id: Annotated[UUID4, Path(...)],
+    user: Annotated[TokenUser, Depends(get_authenticated_user)]
+    ) -> TaskRunDocument:
     task = await TaskCrud.get_task_by_task_celery_id(task_celery_id)
     if not task:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail='no task with this uuid exists')
