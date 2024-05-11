@@ -37,6 +37,7 @@ async def run_task(task_run_request: Annotated[TaskRunRequest, Body(...)],
     logger.info('storing task run in db...')
     task: InitialTaskRunSchema = InitialTaskRunSchema(task_celery_id=task_result.id, task_field=task_run_request.task_field, task_type=task_run_request.task_type, status=task_result.status)
     await TaskCrud.insert_task_run(task, user)
+    return {"task_id": task_result.id}
 
 @router.get("/user-tests",
             status_code=status.HTTP_200_OK,
