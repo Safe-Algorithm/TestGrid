@@ -1,5 +1,9 @@
-import React from "react";
+import { ReactNode } from "react";
 
-export default function Heading({ children, className }) {
+interface HeadingProps {
+  className?: string;
+  children: ReactNode;
+}
+export default function Heading({ className, children }: HeadingProps) {
   return <h1 className={`text-xl lg:text-2xl ${className}`}>{children}</h1>;
 }

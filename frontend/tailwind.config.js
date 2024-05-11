@@ -11,6 +11,8 @@ export default {
         white: "#ffffff",
         "blue-shadow": "#3E00FF",
         "blue-description": "#3080FF",
+        skyblue: "#0867FF33",
+        warning: "#FF6F6F",
       },
       borderWidth: {
         32: "32px",

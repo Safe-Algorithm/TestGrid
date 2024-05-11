@@ -2,8 +2,9 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomePage from "./features/HomePage";
 import Login from "./features/Login";
 import Signup from "./features/Signup";
-import TestOptions from "./features/TestOptions";
 import "./index.css";
+import NetworkScanning from "./features/NetworkScanning";
+import PenOptions from "./features/PenOptions";
 function App() {
   return (
     <BrowserRouter>
@@ -11,8 +12,10 @@ function App() {
         <Route index element={<HomePage />} />
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<Signup />} />
-        <Route path="test">
-          <Route path="options" element={<TestOptions />} />
+        <Route path="penetration">
+          <Route index element={<PenOptions />} />
+          <Route path="options" element={<PenOptions />} />
+          <Route path="network" element={<NetworkScanning />} />
         </Route>
       </Routes>
     </BrowserRouter>

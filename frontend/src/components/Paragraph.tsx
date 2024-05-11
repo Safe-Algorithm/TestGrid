@@ -1,6 +1,10 @@
-import React, { ReactNode } from "react";
+import { ReactNode } from "react";
 
-export default function Paragraph({ children, className }) {
+interface ParagraphProps {
+  className?: string;
+  children: ReactNode;
+}
+export default function Paragraph({ className, children }: ParagraphProps) {
   return (
     <p
       className={`text-md md:text-lg lg:text-xl leading-8 lg:leading-10 ${className}`}
