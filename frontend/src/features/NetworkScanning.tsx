@@ -41,7 +41,7 @@ export default function NetworkScanning() {
     }
   }
   return (
-    <Container>
+    <Container className="bg-white">
       <Heading className="text-blue font-bold">Penetration Testing</Heading>
       <Paragraph className="font-medium">
         Test The Server Network Security

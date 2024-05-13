@@ -12,9 +12,8 @@ export default function TestOption({
   description,
   testPath,
 }: PenOptionProps) {
-  console.log(`/test/${testPath}`);
   return (
-    <div className="flex flex-col border w-11/12 p-4 h-64">
+    <div className="flex flex-col border w-11/12 p-4 h-64 bg-white">
       <Heading className="font-medium mb-4">{title}</Heading>
       <Paragraph>{description}</Paragraph>
       <Link
