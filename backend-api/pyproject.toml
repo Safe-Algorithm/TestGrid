@@ -17,6 +17,7 @@ pydantic-settings = "2.1.0"
 pyjwt = "2.8.0"
 passlib = {extras = ["bcrypt"], version = "^1.7.4"}
 celery = {extras = ["rabbitmq"], version = "^5.4.0"}
+pymongo = "^4.7.2"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "7.4.3"
