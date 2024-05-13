@@ -4,10 +4,10 @@ from enum import Enum
 class TaskStatusEnum(str, Enum):
     drafted = 'DRAFTED'
     pending = 'PENDING'
-    running = 'RUNNING'
+    running = 'STARTED'
     success = 'SUCCESS'
     canceled = 'CANCELED'
-    failed = 'FAILED'
+    failed = 'FAILURE'
 
 class TaskField(str, Enum):
     penetration_test = 'penetration_test'
