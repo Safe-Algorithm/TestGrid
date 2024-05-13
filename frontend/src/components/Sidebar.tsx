@@ -29,7 +29,7 @@ export default function Sidebar() {
           <SidebarLink
             name="Penetration Testing"
             path="penetration"
-            icon=""
+            icon="src/assets/Pen.svg"
             activeIcon="src/assets/Pen-active.svg"
           />
           <SidebarLink
