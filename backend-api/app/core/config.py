@@ -14,6 +14,7 @@ class Settings(BaseSettings):
     MONGO_TESTDB_CONNECTION_URL: MongoDsn
     MONGO_DB_NAME: str
 
+    PORT: int
     JWT_SECRET: str
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 10
     API_KEYS: list[str]

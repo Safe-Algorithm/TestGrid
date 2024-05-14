@@ -5,4 +5,4 @@ services:
     build: .
     env_file: ./base.env
     ports:
-      - 8000:80
+      - 8000:8000
