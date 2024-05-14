@@ -1,3 +1,4 @@
+import uvicorn
 from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
@@ -38,3 +39,7 @@ app.include_router(api_router_v1, prefix=settings.API_V1_STR)
 @app.get("/")
 def health_check():
     return "TestGrid:Ok"
+
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=settings.PORT)
