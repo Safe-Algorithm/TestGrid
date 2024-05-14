@@ -11,7 +11,7 @@ export default function Sidebar() {
   return (
     <>
       <button
-        className="fixed top-2 left-0 z-10 p-2 m-2 rounded md:hidden"
+        className="absolute top-2 left-0 z-10 p-2 m-2 rounded md:hidden"
         onClick={toggleSidebar}
       >
         {!sidebarVisible ? <IoReorderThree size={24} /> : <IoClose size={24} />}
