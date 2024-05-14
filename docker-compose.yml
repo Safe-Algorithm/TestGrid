@@ -10,4 +10,4 @@ services:
     build: ./backend-api
     env_file: ./backend-api/base.env
     ports:
-      - 8000:80
+      - 8000:8000
