@@ -3,6 +3,14 @@ import Heading from "./Heading";
 import SidebarLink from "./SidebarLink";
 import { IoClose, IoReorderThree } from "react-icons/io5";
 
+import PenIcon from "../assets/Pen.svg";
+import PenIconActive from "../assets/Pen-active.svg";
+import BillingIcon from "../assets/Billing.svg";
+import BillingIconActive from "../assets/Billing-active.svg";
+import LimitIcon from "../assets/Limit.svg";
+import LimitIconActive from "../assets/Limit-active.svg";
+import ResultIcon from "../assets/Result.svg";
+import ResultIconActive from "../assets/Result-active.svg";
 export default function Sidebar() {
   const [sidebarVisible, setSidebarVisible] = useState(false);
   const toggleSidebar = () => {
@@ -11,7 +19,7 @@ export default function Sidebar() {
   return (
     <>
       <button
-        className="fixed top-2 left-0 z-10 p-2 m-2 rounded md:hidden"
+        className="absolute top-2 left-0 z-10 p-2 m-2 rounded md:hidden"
         onClick={toggleSidebar}
       >
         {!sidebarVisible ? <IoReorderThree size={24} /> : <IoClose size={24} />}
@@ -29,26 +37,26 @@ export default function Sidebar() {
           <SidebarLink
             name="Penetration Testing"
             path="penetration"
-            icon="src/assets/Pen.svg"
-            activeIcon="src/assets/Pen-active.svg"
+            icon={PenIcon}
+            activeIcon={PenIconActive}
           />
           <SidebarLink
             name="Limit Testing"
             path="limit"
-            icon="src/assets/Limit.svg"
-            activeIcon="src/assets/Limit-active.svg"
+            icon={LimitIcon}
+            activeIcon={LimitIconActive}
           />
           <SidebarLink
             name="Testing Results"
             path="result"
-            icon="src/assets/Result.svg"
-            activeIcon="src/assets/Result-active.svg"
+            icon={ResultIcon}
+            activeIcon={ResultIconActive}
           />
           <SidebarLink
             name="Billing"
             path="billing"
-            icon="src/assets/Billing.svg"
-            activeIcon="src/assets/Billing-active.svg"
+            icon={BillingIcon}
+            activeIcon={BillingIconActive}
           />
         </ul>
       </aside>

@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 
 const host: string = import.meta.env.VITE_SERVER_HOST;
 const port: string = import.meta.env.VITE_SERVER_PORT;
-const API_KEY: string = import.meta.env.VITE_API_KEY;
 
 const Signup = () => {
   const [error, setError] = useState("");
@@ -24,7 +23,6 @@ const Signup = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "X-API-Key": API_KEY,
         },
         body: JSON.stringify(user),
       });

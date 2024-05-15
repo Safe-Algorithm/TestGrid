@@ -17,7 +17,7 @@ export default function TestOption({
       <Heading className="font-medium mb-4">{title}</Heading>
       <Paragraph>{description}</Paragraph>
       <Link
-        to={`/penetration/${testPath}`}
+        to={`/test/penetration/${testPath}`}
         className="md:p-2 ml-auto mt-auto text-center text-lg font-medium bg-green rounded-full w-2/12"
       >
         Try

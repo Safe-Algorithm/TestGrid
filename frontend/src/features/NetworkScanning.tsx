@@ -1,3 +1,4 @@
+import { Link, useNavigate } from "react-router-dom";
 import Container from "../components/Container";
 import Heading from "../components/Heading";
 import Paragraph from "../components/Paragraph";
@@ -6,7 +7,7 @@ import Cookies from "js-cookie";
 export default function NetworkScanning() {
   const host = import.meta.env.VITE_SERVER_HOST;
   const port = import.meta.env.VITE_SERVER_PORT;
-  const API_KEY = import.meta.env.VITE_API_KEY;
+  const navigate = useNavigate();
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
@@ -30,14 +31,15 @@ export default function NetworkScanning() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "X-API-Key": API_KEY,
           Authorization: `Bearer ${accessToken}`,
         },
         body: JSON.stringify(testOptions),
       }
     );
+    const data = await response.json();
+
     if (response.status == 200) {
-      console.log("Success");
+      navigate(`/test/result/${data.task_id}`);
     }
   }
   return (

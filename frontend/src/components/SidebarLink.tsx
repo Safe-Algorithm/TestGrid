@@ -1,9 +1,12 @@
+import { ReactElement, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
+import VectorIcon from "../assets/Vector.svg";
+import VectorIconActive from "../assets/Vector-active.svg";
 interface SidebarLinkProps {
   name: string;
-  icon: string;
-  activeIcon: string;
+  icon: ReactElement;
+  activeIcon: ReactElement;
   path: string;
 }
 export default function SidebarLink({
@@ -13,19 +16,22 @@ export default function SidebarLink({
   path,
 }: SidebarLinkProps) {
   const { pathname } = useLocation();
-  const currentLocation = pathname.split("/")[1];
-  const isOpen = currentLocation == path;
+  const [currentLocation, setCurrentLocation] = useState("");
+  const [isActive, setIsActive] = useState(false);
+  useEffect(() => {
+    setCurrentLocation(pathname.split("/")[2]);
+    setIsActive(currentLocation == path);
+  }, [path, currentLocation, pathname]);
   return (
     <li id={path}>
-      <Link to={`/${path}`} className="flex gap-2">
-        <img
-          src={
-            isOpen ? "src/assets/Vector-active.svg" : "src/assets/Vector.svg"
-          }
-        />
-        <img src={isOpen ? activeIcon : icon} />
+      <Link to={`/test/${path}`} className="flex gap-2">
+        <img src={isActive ? VectorIconActive : VectorIcon} />
+
+        <img src={isActive ? activeIcon : icon} />
         <span
-          className={isOpen ? "text-blue font-bold" : "text-black font-medium"}
+          className={
+            isActive ? "text-blue font-bold" : "text-black font-medium"
+          }
         >
           {name}
         </span>

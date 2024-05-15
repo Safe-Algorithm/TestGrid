@@ -9,7 +9,6 @@ import Input from "../components/Input";
 function Login() {
   const host = import.meta.env.VITE_SERVER_HOST;
   const port = import.meta.env.VITE_SERVER_PORT;
-  const API_KEY = import.meta.env.VITE_API_KEY;
 
   let email = "";
   let password = "";
@@ -32,7 +31,6 @@ function Login() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "X-API-Key": API_KEY,
         },
         body: JSON.stringify(user),
       });
