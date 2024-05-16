@@ -1,15 +1,20 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Container from "../components/Container";
 import Heading from "../components/Heading";
 import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
+import ResultSmallCard from "../components/ResultSmallCard";
+import TimeIcon from "../assets/Time.svg";
+import StatusIcon from "../assets/Status.svg";
+import OSIcon from "../assets/OS.svg";
+import ResultBigCard from "../components/ResultBigCard";
 
 export default function PenResult() {
   const { id } = useParams();
   const host = import.meta.env.VITE_SERVER_HOST;
   const port = import.meta.env.VITE_SERVER_PORT;
   const [status, setStatus] = useState("PENDING");
-  const [result, setResult] = useState(null);
+  const [result, setResult] = useState();
   useEffect(() => {
     const intervalId = setInterval(async function () {
       const accessToken = Cookies.get("accessToken");
@@ -24,7 +29,8 @@ export default function PenResult() {
       setStatus(data.status);
       if (data.status == "SUCCESS") {
         clearInterval(intervalId);
-        setResult(data.result);
+        const cleanedData = cleanData(data.result);
+        setResult(cleanedData);
       }
     }, 5000);
 
@@ -32,16 +38,78 @@ export default function PenResult() {
       clearInterval(intervalId); // Clean up the interval when the component unmounts
     };
   }, [id, host, port]);
-  if (result) {
-    const data = cleanData(result);
-  }
+
   return (
-    <Container className="bg-white h-3/4">
-      <Heading className="text-blue font-bold mb-16">Results</Heading>
-      <div className="text-center">
-        {status != "SUCCESS" ? status + "..." : "s"}
-      </div>
-    </Container>
+    <div className="bg-neutral-100 pb-12">
+      <Container className="bg-white m-2 w-11/12 py-4">
+        <div className="m-4">
+          <div className="flex justify-between">
+            <p className="mb-12 md:mb-18 text-black text-2xl md:text-4xl font-bold">
+              Testing Results
+            </p>
+            <Link to="" className="text-blue underline text-lg font-medium">
+              Testing History
+            </Link>
+          </div>
+          <div className="text-center text-blue">
+            {status != "SUCCESS" ? status + "..." : ""}
+          </div>
+          {result && (
+            <>
+              <p className="text-blue font-bold mb-4 text-xl md:text-3xl">
+                Info
+              </p>
+              <div className="grid md:grid-cols-2 2xl:grid-cols-4 gap-2 mb-12">
+                {result.elapsed && (
+                  <ResultSmallCard
+                    name="Elapsed Time"
+                    value={result.elapsed}
+                    icon={TimeIcon}
+                  />
+                )}
+                {result.status && (
+                  <ResultSmallCard
+                    name="Status"
+                    value={result.status}
+                    icon={StatusIcon}
+                  />
+                )}
+                {result.ostype && (
+                  <ResultSmallCard
+                    name="OS"
+                    value={result.ostype}
+                    icon={OSIcon}
+                  />
+                )}
+                {result.numOfServices && (
+                  <ResultSmallCard
+                    name="Number Of Services"
+                    value={result.numOfServices}
+                    icon={OSIcon}
+                  />
+                )}
+              </div>
+              <p className="text-darkgreen font-bold mb-4 text-xl md:text-3xl">
+                Services
+              </p>
+              <div className="grid lg:grid-cols-2 gap-4 mb-4">
+                {result.services &&
+                  result.services.map((service) => {
+                    return (
+                      <ResultBigCard
+                        serviceName={service.name}
+                        version={service.version}
+                        productName={service.product}
+                        portID={service.portid}
+                      />
+                    );
+                  })}
+              </div>
+            </>
+          )}
+        </div>
+      </Container>
+    </div>
   );
 }
 

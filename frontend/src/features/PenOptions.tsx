@@ -4,7 +4,7 @@ import PenOption from "../components/PenOption";
 
 export default function PenOptions() {
   return (
-    <>
+    <div className="bg-neutral-100 w-full h-full md:h-screen">
       <Container>
         <Heading className="mb-8 text-blue font-bold">
           Select The Test Type You Want To Run
@@ -32,6 +32,6 @@ export default function PenOptions() {
           />
         </div>
       </Container>
-    </>
+    </div>
   );
 }

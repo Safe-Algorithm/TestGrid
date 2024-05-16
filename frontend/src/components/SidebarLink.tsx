@@ -24,7 +24,10 @@ export default function SidebarLink({
   }, [path, currentLocation, pathname]);
   return (
     <li id={path}>
-      <Link to={`/test/${path}`} className="flex gap-2">
+      <Link
+        to={`/test/${path}`}
+        className={`flex gap-2 p-2 ${isActive && "bg-skyblue3 rounded-md"}`}
+      >
         <img src={isActive ? VectorIconActive : VectorIcon} />
 
         <img src={isActive ? activeIcon : icon} />
