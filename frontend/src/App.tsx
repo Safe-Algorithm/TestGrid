@@ -7,6 +7,7 @@ import NetworkScanning from "./features/NetworkScanning";
 import PenOptions from "./features/PenOptions";
 import Layout from "./components/Layout";
 import PenResult from "./features/PenResult";
+import TestHistory from "./features/TestHistory";
 function App() {
   return (
     <BrowserRouter>
@@ -21,6 +22,7 @@ function App() {
             <Route path="network" element={<NetworkScanning />} />
           </Route>
           <Route path="result">
+            <Route index element={<TestHistory />} />
             <Route path=":id" element={<PenResult />} />
           </Route>
         </Route>

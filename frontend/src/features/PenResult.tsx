@@ -1,13 +1,14 @@
 import { Link, useParams } from "react-router-dom";
 import Container from "../components/Container";
-import Heading from "../components/Heading";
 import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
 import ResultSmallCard from "../components/ResultSmallCard";
+import ResultBigCard from "../components/ResultBigCard";
+
 import TimeIcon from "../assets/Time.svg";
 import StatusIcon from "../assets/Status.svg";
 import OSIcon from "../assets/OS.svg";
-import ResultBigCard from "../components/ResultBigCard";
+import NumberOfServicesIcon from "../assets/NumberOfServices.svg";
 
 export default function PenResult() {
   const { id } = useParams();
@@ -69,7 +70,7 @@ export default function PenResult() {
                 )}
                 {result.status && (
                   <ResultSmallCard
-                    name="Status"
+                    name="Server Status"
                     value={result.status}
                     icon={StatusIcon}
                   />
@@ -85,7 +86,7 @@ export default function PenResult() {
                   <ResultSmallCard
                     name="Number Of Services"
                     value={result.numOfServices}
-                    icon={OSIcon}
+                    icon={NumberOfServicesIcon}
                   />
                 )}
               </div>

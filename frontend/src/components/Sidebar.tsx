@@ -30,7 +30,7 @@ export default function Sidebar() {
           sidebarVisible ? "flex" : "hidden"
         } md:flex`}
       >
-        <Heading className="font-extrabold text-blue mb-4 text-center">
+        <Heading className="font-extrabold text-blue mb-4 text-center [text-shadow:1px_1px_var(--tw-shadow-color)] shadow-black">
           TESTGRID
         </Heading>
         <ul className="flex flex-col gap-8">

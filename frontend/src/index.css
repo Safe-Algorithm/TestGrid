@@ -13,25 +13,6 @@
   font-weight: bold;
 }
 
-.active::before {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 70%;
-  height: 4px;
-  background-color: var(--secondary);
-}
-
-.active::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 70%;
-  width: 30%;
-  height: 4px;
-  background-color: var(--primary);
-}
 @media only screen and (min-width: 1024px) {
   .leading-12 {
     line-height: 3rem !important;

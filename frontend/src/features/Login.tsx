@@ -56,16 +56,16 @@ function Login() {
       <div className="bg-[url('src/assets/background.svg')] bg-repeat w-full h-full absolute top-0 left-0"></div>
       <main className="relative min-h-full">
         <div className="hidden md:block fixed inset-x-0 bottom-0 h-8 bg-green w-full"></div>
-        <Container className="flex-grow">
+        <Container className="">
           <img
             src="src/assets/register-mobile-illustration.svg"
             className=" mx-auto md:hidden"
           />
           <NavBar isLogin={true} />
-          <section className="flex-grow">
+          <section className="mt-4 md:mt-32">
             <form
               onSubmit={handleSubmit}
-              className="flex flex-col items-center md:items-start"
+              className="flex flex-col items-center md:items-start "
             >
               {isError && (
                 <p className=" bg-red-200 text-red-600 border-l-8 border-red-600 font-roboto font-bold p-4 m-3">
