@@ -33,15 +33,15 @@ def task_event_handler():
     def task_event_handler(event):
         state.event(event)
         task = state.tasks.get(event['uuid'])
-        while not check_task_exists(task.id):
-            continue
+        # while not check_task_exists(task.id):
+        #     continue
         request_to_update_task(task.id)
 
     def task_event_succeeded_handler(event):
         state.event(event)
         task = state.tasks.get(event['uuid'])
-        while not check_task_exists(task.id):
-            continue
+        # while not check_task_exists(task.id):
+        #     continue
         request_to_update_task(task.id)
 
     with celery_app.connection() as connection:
