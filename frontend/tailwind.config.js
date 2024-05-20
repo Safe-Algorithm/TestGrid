@@ -6,12 +6,20 @@ export default {
     extend: {
       colors: {
         blue: "#0867FF",
-        green: "#C1FF00",
-        black: "#2a2a2a",
-        white: "#ffffff",
         "blue-shadow": "#3E00FF",
         "blue-description": "#3080FF",
         skyblue: "#0867FF33",
+        skyblue2: "#0867FF12",
+        skyblue3: "#0867FF26",
+
+        green: "#C1FF00",
+        darkgreen: "#A4D900",
+        lightgreen1: "#C1FF0012",
+        lightgreen2: "#C1FF0026",
+
+        black: "#2a2a2a",
+        white: "#ffffff",
+
         warning: "#FF6F6F",
       },
       borderWidth: {

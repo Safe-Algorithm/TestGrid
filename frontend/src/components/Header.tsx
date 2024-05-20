@@ -1,9 +1,13 @@
-import React from "react";
 import Container from "./Container";
 import Paragraph from "./Paragraph";
 import Heading from "./Heading";
+import { useNavigate } from "react-router-dom";
 
 export default function Header() {
+  const navigate = useNavigate();
+  function handleOnClick() {
+    navigate("/test");
+  }
   return (
     <Container>
       <header className="relative border-4 border-black rounded-default p-3 min-h-[31rem] sm:min-h-[28rem] header-shadow md:flex">
@@ -22,7 +26,10 @@ export default function Header() {
             user traffic.
           </Paragraph>
           <span className="flex items-end grow mb-8">
-            <button className="inline bg-green border-2 lg:text-lg border-black font-bold text-black p-2 lg:p-3 mt-10 lg:mt-22 sm:w-[11rem] lg:w-72 rounded-default">
+            <button
+              onClick={handleOnClick}
+              className="inline bg-green border-2 lg:text-lg border-black font-bold text-black p-2 lg:p-3 mt-10 lg:mt-22 sm:w-[11rem] lg:w-72 rounded-default"
+            >
               <Heading>Get Started</Heading>
             </button>
           </span>

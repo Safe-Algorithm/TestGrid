@@ -3,11 +3,10 @@ import Container from "../components/Container";
 import NavBar from "../components/NavBar";
 import Input from "../components/Input";
 import Button from "../components/Button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const host: string = import.meta.env.VITE_SERVER_HOST;
 const port: string = import.meta.env.VITE_SERVER_PORT;
-const API_KEY: string = import.meta.env.VITE_API_KEY;
 
 const Signup = () => {
   const [error, setError] = useState("");
@@ -17,6 +16,7 @@ const Signup = () => {
     username: String,
     password: String,
   };
+  const navigate = useNavigate();
 
   const fetchAPI = async () => {
     try {
@@ -24,7 +24,6 @@ const Signup = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "X-API-Key": API_KEY,
         },
         body: JSON.stringify(user),
       });
@@ -42,6 +41,8 @@ const Signup = () => {
         // if email is missing
         setError("Invalid email!");
         setIsError(true);
+      } else if (res.status === 200) {
+        navigate("/login");
       } else {
         setError("");
         setIsError(true);
@@ -65,13 +66,13 @@ const Signup = () => {
       <div className="bg-[url('src/assets/background.svg')] bg-repeat w-full h-full absolute top-0 left-0"></div>
       <main className="relative min-h-full">
         <div className="hidden md:block fixed inset-x-0 bottom-0 h-8 bg-green w-full"></div>
-        <Container className="flex-grow">
+        <Container className="">
           <img
             src="src/assets/register-mobile-illustration.svg"
             className=" mx-auto md:hidden"
           />
           <NavBar />
-          <section className="flex-grow">
+          <section className="mt-4 md:mt-32">
             <form
               onSubmit={handleSubmit}
               className="flex flex-col items-center md:items-start"
