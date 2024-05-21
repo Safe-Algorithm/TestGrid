@@ -44,7 +44,7 @@ function Login() {
 
         Cookies.set("accessToken", accessToken, { expires: 2 });
 
-        navigate("/", { replace: true });
+        navigate("/test/penetration", { replace: true });
       } else {
         setIsError(true);
         setError("Something went wrong! Please try again");

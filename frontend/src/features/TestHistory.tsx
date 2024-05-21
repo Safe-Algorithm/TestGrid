@@ -16,8 +16,8 @@ export default function TestHistory() {
   }
 
   useEffect(() => {
-    async function fetchTests() {
-      const accessToken = Cookies.get("accessToken");
+    const accessToken = Cookies.get("accessToken");
+    async function firstRequest() {
       const response = await fetch(
         `http://${host}:${port}/api/v1/test/user-tests`,
         {
@@ -29,7 +29,23 @@ export default function TestHistory() {
       );
       setData(await response.json());
     }
-    fetchTests();
+    firstRequest();
+    const intervalId = setInterval(async function () {
+      const response = await fetch(
+        `http://${host}:${port}/api/v1/test/user-tests`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      );
+      setData(await response.json());
+    }, 5000);
+
+    return () => {
+      clearInterval(intervalId); // Clean up the interval when the component unmounts
+    };
   }, [host, port]);
 
   return (

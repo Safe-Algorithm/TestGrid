@@ -17,9 +17,23 @@ export default function PenResult() {
   const [status, setStatus] = useState("PENDING");
   const [result, setResult] = useState();
   useEffect(() => {
+    const accessToken = Cookies.get("accessToken");
+    async function firstRequest() {
+      const response = await fetch(`http://${host}:${port}/api/v1/test/${id}`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+      const data = await response.json();
+      setStatus(data.status);
+      if (data.status == "SUCCESS") {
+        const cleanedData = cleanData(data.result);
+        setResult(cleanedData);
+      }
+    }
+    firstRequest();
     const intervalId = setInterval(async function () {
-      const accessToken = Cookies.get("accessToken");
-
       const response = await fetch(`http://${host}:${port}/api/v1/test/${id}`, {
         method: "GET",
         headers: {
@@ -48,7 +62,10 @@ export default function PenResult() {
             <p className="mb-12 md:mb-18 text-black text-2xl md:text-4xl font-bold">
               Testing Results
             </p>
-            <Link to="" className="text-blue underline text-lg font-medium">
+            <Link
+              to="/test/result"
+              className="text-blue underline text-lg font-medium"
+            >
               Testing History
             </Link>
           </div>

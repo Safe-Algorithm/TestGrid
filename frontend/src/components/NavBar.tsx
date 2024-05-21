@@ -9,7 +9,7 @@ interface NavBarProps {
 export default function NavBar({ isLogin = false }: NavBarProps) {
   return (
     <nav className="md:flex">
-      <div className="flex-auto">
+      <div className="flex-auto xl:flex-1">
         <Logo />
       </div>
       <div className="md:flex-auto xl:flex-1">
@@ -35,9 +35,11 @@ export default function NavBar({ isLogin = false }: NavBarProps) {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/aboutus" className="lg:text-lg">
-              Contact Us
-            </NavLink>
+            {Cookies.get("accessToken") && (
+              <NavLink to="/test/penetration" className="lg:text-lg">
+                Dashboard
+              </NavLink>
+            )}
           </li>
           <li>
             {!Cookies.get("accessToken") ? (
