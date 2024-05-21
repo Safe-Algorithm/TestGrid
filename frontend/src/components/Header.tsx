@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 export default function Header() {
   const navigate = useNavigate();
   function handleOnClick() {
-    navigate("/test");
+    navigate("/test/penetration");
   }
   return (
     <Container>
