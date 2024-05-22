@@ -2,6 +2,7 @@ from fastapi import APIRouter, Depends, status, Path, HTTPException, Body, Secur
 
 from typing import Annotated
 
+from app.api.deps import get_authenticated_user
 from app.crud.users import UserCrud
 from app.models.users import UserDocument
 from app.schemas.users import UserInRegister, UserInLogin, TokenUser, AccessToken
@@ -43,4 +44,12 @@ async def login_user(user: Annotated[UserInLogin, Body(...)]) -> AccessToken:
     user_token_info.updated_at = user_token_info.updated_at.isoformat()
     access_token = await create_access_token({'sub': user_token_info.email, 'user': user_token_info.model_dump()})
     return AccessToken(access_token=access_token)
+
+
+@router.post("/is-authenticated",
+            status_code=status.HTTP_200_OK,
+            description="check if a user is authenticated",
+            dependencies=[Depends(get_authenticated_user)])
+async def check_is_authenticated():
+    return
     
