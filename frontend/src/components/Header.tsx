@@ -5,9 +5,11 @@ import { useNavigate } from "react-router-dom";
 
 export default function Header() {
   const navigate = useNavigate();
+
   function handleOnClick() {
     navigate("/test/penetration");
   }
+
   return (
     <Container>
       <header className="relative border-4 border-black rounded-default p-3 min-h-[31rem] sm:min-h-[28rem] header-shadow md:flex">

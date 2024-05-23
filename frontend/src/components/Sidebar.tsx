@@ -11,11 +11,16 @@ import LimitIcon from "../assets/Limit.svg";
 import LimitIconActive from "../assets/Limit-active.svg";
 import ResultIcon from "../assets/Result.svg";
 import ResultIconActive from "../assets/Result-active.svg";
+import { useNavigate } from "react-router-dom";
 export default function Sidebar() {
   const [sidebarVisible, setSidebarVisible] = useState(false);
   const toggleSidebar = () => {
     setSidebarVisible(!sidebarVisible);
   };
+  const navigate = useNavigate();
+  function handleLogoClick() {
+    navigate("/");
+  }
   return (
     <>
       <button
@@ -30,9 +35,11 @@ export default function Sidebar() {
           sidebarVisible ? "flex" : "hidden"
         } md:flex`}
       >
-        <Heading className="font-extrabold text-blue mb-4 text-center [text-shadow:1px_1px_var(--tw-shadow-color)] shadow-black">
-          TESTGRID
-        </Heading>
+        <button onClick={handleLogoClick}>
+          <Heading className="font-extrabold text-blue mb-4 text-center [text-shadow:1px_1px_var(--tw-shadow-color)] shadow-black">
+            TESTGRID
+          </Heading>
+        </button>
         <ul className="flex flex-col gap-8">
           <SidebarLink
             name="Penetration Testing"

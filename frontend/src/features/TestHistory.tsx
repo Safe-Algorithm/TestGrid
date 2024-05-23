@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import Container from "../components/Container";
 import Cookies from "js-cookie";
 
@@ -6,14 +5,9 @@ import { useEffect, useState } from "react";
 import HistoryCard from "../components/HistoryCard";
 
 export default function TestHistory() {
-  const navigate = useNavigate();
   const [data, setData] = useState();
   const host = import.meta.env.VITE_SERVER_HOST;
   const port = import.meta.env.VITE_SERVER_PORT;
-
-  function handleOnClick(id: string) {
-    navigate(`/${id}`);
-  }
 
   useEffect(() => {
     const accessToken = Cookies.get("accessToken");
