@@ -20,17 +20,17 @@ export default function NavBar({ isLogin = false }: NavBarProps) {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/features" className="lg:text-lg">
+            <NavLink to="#features" className="lg:text-lg">
               Features
             </NavLink>
           </li>
           <li>
-            <NavLink to="/pricing" className="lg:text-lg">
+            <NavLink to="#pricing" className="lg:text-lg">
               Plans
             </NavLink>
           </li>
           <li>
-            <NavLink to="/aboutus" className="lg:text-lg">
+            <NavLink to="#about-us" className="lg:text-lg">
               Reviews
             </NavLink>
           </li>

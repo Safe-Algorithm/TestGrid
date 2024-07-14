@@ -3,14 +3,17 @@ import React from "react";
 import { CardStack } from "./ui/card-stack";
 import { cn } from "../utils/cn";
 import SectionHeading from "./SectionHeading";
+import Container from "./Container";
 export function Reviews() {
   return (
-    <section className="mt-16 relative w-full">
+    <section className="mt-16 relative w-full" id="reviews">
       <SectionHeading title="Reviews" />
-      <div className="w-10/12 w-full md:w-10/12 m-auto flex justify-center">
-        <span className="h-24 top-[170px] md:top-[193px] left-0 border border-y-1 border-x-0 border-black bg-green w-full absolute"></span>
-        <CardStack items={CARDS} />
-      </div>
+      <Container className="w-11/12">
+        <div className="md:w-10/12 m-auto flex justify-center">
+          <span className="h-24 top-[170px] md:top-[193px] left-0 border border-y-1 border-x-0 border-black bg-green w-full absolute"></span>
+          <CardStack items={CARDS} />
+        </div>
+      </Container>
     </section>
   );
 }
@@ -37,39 +40,37 @@ export const Highlight = ({
 const CARDS = [
   {
     id: 0,
-    name: "Manu Arora",
-    designation: "Senior Software Engineer",
+    name: "Ahmad Ali",
+    designation: "IT Manager",
     content: (
       <p>
-        These cards are amazing, <Highlight>I want to use them</Highlight> in my
-        project. Framer motion is a godsend ngl tbh fam 🙏
+        <Highlight>TestGrid</Highlight> is a lifesaver. It automates a large
+        portion of our penetration testing, freeing up my time for more complex
+        tasks. The platform also provides excellent reporting, making it easy to
+        communicate vulnerabilities to stakeholders.
       </p>
     ),
   },
   {
     id: 1,
-    name: "Elon Musk",
-    designation: "Senior Shitposter",
+    name: "Fatimah Khalid",
+    designation: "CEO",
     content: (
       <p>
-        I dont like this Twitter thing,{" "}
-        <Highlight>deleting it right away</Highlight> because yolo. Instead, I
-        would like to call it <Highlight>X.com</Highlight> so that it can easily
-        be confused with adult sites.
+        Loved <Highlight>TestGrid</Highlight>, My website loads fast and stays
+        secure 💙.
       </p>
     ),
   },
   {
     id: 2,
-    name: "Tyler Durden",
-    designation: "Manager Project Mayhem",
+    name: "Ammar Mohammad",
+    designation: "Security Analyst",
     content: (
       <p>
-        The first rule of
-        <Highlight>Fight Club</Highlight> is that you do not talk about fight
-        club. The second rule of
-        <Highlight>Fight club</Highlight> is that you DO NOT TALK about fight
-        club.
+        Since using <Highlight>TestGrid</Highlight>, we've experienced fewer
+        security incidents and our website performance has improved
+        significantly.
       </p>
     ),
   },

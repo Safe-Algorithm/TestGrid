@@ -6,13 +6,12 @@ import Header from "../components/Header";
 import Plans from "../components/Plans";
 import Contact from "../components/Contact";
 import { Reviews } from "../components/Reviews";
-import NavBar from "../components/NavBar";
+import { Nav } from "../components/Nav";
 function HomePage() {
   return (
     <main className="w-full bg-[url('./images/background.svg')]">
-      <Container>
-        <NavBar />
-      </Container>
+      {/* <NavBar /> */}
+      <Nav />
       <Header />
       <Features />
       <Plans />

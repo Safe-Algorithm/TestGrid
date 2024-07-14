@@ -6,7 +6,12 @@
   --primary: #0867ff;
   --secondary: #c1ff00;
 }
-
+html {
+  scroll-behavior: smooth;
+}
+body {
+  overflow-x: hidden;
+}
 .active {
   position: relative;
   padding-bottom: 10px;
@@ -32,4 +37,7 @@
 }
 .stroke {
   -webkit-text-stroke: 1px #2a2a2a;
+}
+.nav-shadow {
+  box-shadow: 2px 2px #c1ff00;
 }
