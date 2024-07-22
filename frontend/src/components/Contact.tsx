@@ -4,7 +4,7 @@ import SectionHeading from "./SectionHeading";
 
 export default function Contact() {
   return (
-    <section className="mt-16">
+    <section className="mt-16" id="contact-us">
       <SectionHeading title="Contact Us" />
       <form action="" className="mt-8 p-5">
         <div className="grid grid-cols-2 p-5 sm:w-10/12 m-auto gap-5 border-4 border-black rounded-default card-shadow ">
@@ -16,7 +16,7 @@ export default function Contact() {
               <Paragraph>Name</Paragraph>
             </label>
             <input
-              className="border border-black p-2 rounded-default"
+              className="border p-2 rounded-default border-blue focus:outline-green"
               type="text"
               name="name"
             />
@@ -26,7 +26,7 @@ export default function Contact() {
               <Paragraph>Email</Paragraph>
             </label>
             <input
-              className="border border-black p-2 rounded-default"
+              className="border p-2 rounded-default border-blue focus:outline-green"
               type="email"
               name="email"
             />
@@ -36,7 +36,7 @@ export default function Contact() {
               <Paragraph>Message</Paragraph>
             </label>
             <textarea
-              className="border border-black rounded-default"
+              className="border rounded-default p-1 border-blue focus:outline-green"
               name="message"
               id=""
               cols="30"
@@ -45,7 +45,7 @@ export default function Contact() {
           </div>
 
           <button
-            className="border border-black bg-green p-2 font-bold text-black col-span-2 lg:w-[150px] rounded-default"
+            className="border border-black bg-green hover:bg-blue hover:text-green transition-colors p-2 font-bold text-black col-span-2 lg:w-[150px] rounded-default"
             type="submit"
           >
             <Heading>Send</Heading>

@@ -5,14 +5,9 @@ import Paragraph from "./Paragraph";
 
 export default function Features() {
   return (
-    <section className="mt-16">
+    <section className="mt-16" id="features">
       <SectionHeading title="Features" />
-      <Container>
-        <Paragraph className="md:mt-8 text-blue">
-          we've tried our best to give great services possible. Our platform
-          offers a range of cutting-edge capabilities designed to maximize
-          security, optimize performance, and provide best user experience.
-        </Paragraph>
+      <Container className="w-11/12">
         <div className="grid md:grid-cols-2 gap-6 mt-8">
           <FeatureCard
             title="Cloud-Based Penetration Testing"
