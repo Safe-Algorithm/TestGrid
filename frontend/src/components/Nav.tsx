@@ -1,8 +1,4 @@
 "use client";
-import React, { useState } from "react";
-import { HoveredLink, Menu, MenuItem, ProductItem } from "./ui/navbar-menu";
-import { cn } from "../utils/cn";
-import Heading from "./Heading";
 import Container from "./Container";
 import Cookies from "js-cookie";
 import Avatar from "../assets/Avatar.svg";
@@ -11,7 +7,7 @@ export function Nav() {
   return (
     <section>
       <Container className="w-11/12 sm:w-10/12 flex items-center justify-center">
-        <nav className="w-full border-4 border-blue bg-white rounded-default nav-shadow">
+        <nav className="w-full border-2 border-blue bg-white rounded-default">
           <div className="max-w-screen-xl flex flex-wrap items-center justify-between md:justify-start mx-auto px-2">
             <a
               href="/"
@@ -44,11 +40,11 @@ export function Nav() {
                   />
                 </button>
               ) : (
-                <ul className="flex flex-col text-blue font-medium p-4 md:p-0 mt-4 border rounded md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 gap-y-2 md:gap-y-0">
+                <ul className="hidden md:flex flex-col text-blue font-medium p-4 md:p-0 mt-4 rounded md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 gap-y-2 md:gap-y-0">
                   <li>
                     <a
                       href="/login"
-                      className="block hover:bg-blue hover:text-green md:bg-none py-2 px-3 rounded  md:bg-transparent md:hover:text-green transition-colors border border-blue md:border-none"
+                      className="block hover:bg-blue hover:text-green md:bg-none py-2 px-3 rounded  md:bg-transparent md:hover:text-green transition-colors border-blue md:border-none"
                       aria-current="page"
                     >
                       Login
@@ -91,7 +87,7 @@ export function Nav() {
               <button
                 data-collapse-toggle="navbar-user"
                 type="button"
-                className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden focus:outline-none focus:ring-2 focus:ring-gray-200"
+                className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-blue rounded-lg md:hidden focus:outline-none focus:bg-blue focus:text-green"
                 aria-controls="navbar-user"
                 aria-expanded="false"
               >
@@ -117,7 +113,7 @@ export function Nav() {
               className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1 md:px-8"
               id="navbar-user"
             >
-              <ul className="flex flex-col text-blue font-medium p-4 md:p-0 mt-4 border rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 gap-y-2 md:gap-y-0">
+              <ul className="flex flex-col text-blue font-medium p-4 md:p-0 mt-4 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 gap-y-2 md:gap-y-0">
                 <li>
                   <a
                     href="#features"
@@ -151,6 +147,17 @@ export function Nav() {
                     Contact Us
                   </a>
                 </li>
+                <li>
+                  {!Cookies.get("accessToken") ? (
+                    <a
+                      href="/login"
+                      className="block hover:bg-blue hover:text-green md:bg-none py-2 px-3 rounded  md:bg-transparent md:hover:text-green transition-colors border-blue md:border-none"
+                      aria-current="page"
+                    >
+                      Login
+                    </a>
+                  ) : null}
+                </li>
               </ul>
             </div>
           </div>
@@ -159,100 +166,3 @@ export function Nav() {
     </section>
   );
 }
-
-// function Navbar({ className }: { className?: string }) {
-//   const [active, setActive] = useState<string | null | React.ReactNode>(null);
-//   return (
-//     <div className={cn("w-full", className)}>
-//       <Menu setActive={setActive}>
-//         <div className="flex items-center">
-//           <img src="images/logo.svg" className="w-[95px]" alt="" />
-//           <Heading className="font-bold md:text-3xl text-blue">
-//             TestGrid
-//           </Heading>
-//         </div>
-//         <div className="flex grow-0 justify-end items-center w-full space-x-4">
-//           <MenuItem
-//             setActive={() => setActive(null)}
-//             active={active}
-//             item="Features"
-//             href="#features"
-//           ></MenuItem>
-//           <MenuItem
-//             setActive={() => setActive(null)}
-//             active={active}
-//             item="Plans"
-//             href="#plans"
-//           ></MenuItem>
-//           <MenuItem
-//             setActive={() => setActive(null)}
-//             active={active}
-//             item="Reviews"
-//             href="#reviews"
-//           ></MenuItem>
-//           <MenuItem
-//             setActive={() => setActive(null)}
-//             active={active}
-//             item="Contact Us"
-//             href="#contact-us"
-//           ></MenuItem>
-//           {!Cookies.get("accessToken") ? (
-//             <MenuItem
-//               setActive={() => setActive(null)}
-//               active={active}
-//               item="Login"
-//               href="/login"
-//             ></MenuItem>
-//           ) : (
-//             <MenuItem
-//               setActive={setActive}
-//               active={active}
-//               item={<img className="w-12" src={Avatar} alt="avatar" />}
-//             >
-//               <div className="flex flex-col space-y-4 text-sm">
-//                 <HoveredLink href="/logou">Logout</HoveredLink>
-//                 <HoveredLink href="/test">Dashboard</HoveredLink>
-//               </div>
-//             </MenuItem>
-//           )}
-//         </div>
-//         {/* <MenuItem setActive={setActive} active={active} item="Products">
-//           <div className="  text-sm grid grid-cols-2 gap-10 p-4">
-//             <ProductItem
-//               title="Algochurn"
-//               href="https://algochurn.com"
-//               src="https://assets.aceternity.com/demos/algochurn.webp"
-//               description="Prepare for tech interviews like never before."
-//             />
-//             <ProductItem
-//               title="Tailwind Master Kit"
-//               href="https://tailwindmasterkit.com"
-//               src="https://assets.aceternity.com/demos/tailwindmasterkit.webp"
-//               description="Production ready Tailwind css components for your next project"
-//             />
-//             <ProductItem
-//               title="Moonbeam"
-//               href="https://gomoonbeam.com"
-//               src="https://assets.aceternity.com/demos/Screenshot+2024-02-21+at+11.51.31%E2%80%AFPM.png"
-//               description="Never write from scratch again. Go from idea to blog in minutes."
-//             />
-//             <ProductItem
-//               title="Rogue"
-//               href="https://userogue.com"
-//               src="https://assets.aceternity.com/demos/Screenshot+2024-02-21+at+11.47.07%E2%80%AFPM.png"
-//               description="Respond to government RFPs, RFIs and RFQs 10x faster using AI"
-//             />
-//           </div>
-//         </MenuItem>
-//         <MenuItem setActive={setActive} active={active} item="Pricing">
-//           <div className="flex flex-col space-y-4 text-sm">
-//             <HoveredLink href="/hobby">Hobby</HoveredLink>
-//             <HoveredLink href="/individual">Individual</HoveredLink>
-//             <HoveredLink href="/team">Team</HoveredLink>
-//             <HoveredLink href="/enterprise">Enterprise</HoveredLink>
-//           </div>
-//         </MenuItem> */}
-//       </Menu>
-//     </div>
-//   );
-// }
