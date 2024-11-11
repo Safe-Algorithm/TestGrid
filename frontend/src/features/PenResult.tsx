@@ -55,15 +55,15 @@ export default function PenResult() {
   }, [id, host, port]);
 
   return (
-    <div className="bg-neutral-100 pb-12">
-      <Container className="bg-white m-2 w-11/12 py-4">
+    <div className="bg-neutral-100 col-start-1 md:col-start-2 col-end-3 row-start-2 row-end-3 p-4">
+      <section className="bg-white p-4 rounded-default">
         <div className="m-4">
           <div className="flex justify-between">
             <p className="mb-12 md:mb-18 text-black text-2xl md:text-4xl font-bold">
               Testing Results
             </p>
             <Link
-              to="/test/result"
+              to="/dashboard/test/history"
               className="text-blue underline text-lg font-medium"
             >
               Testing History
@@ -126,7 +126,7 @@ export default function PenResult() {
             </>
           )}
         </div>
-      </Container>
+      </section>
     </div>
   );
 }

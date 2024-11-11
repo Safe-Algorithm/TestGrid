@@ -7,7 +7,7 @@ export function Nav() {
   return (
     <section>
       <Container className="w-11/12 sm:w-10/12 flex items-center justify-center">
-        <nav className="w-full border-2 border-blue bg-white rounded-default">
+        <nav className="w-full border-2 border-blue bg-transparent rounded-default">
           <div className="max-w-screen-xl flex flex-wrap items-center justify-between md:justify-start mx-auto px-2">
             <a
               href="/"
@@ -39,19 +39,7 @@ export function Nav() {
                     alt="avatar"
                   />
                 </button>
-              ) : (
-                <ul className="hidden md:flex flex-col text-blue font-medium p-4 md:p-0 mt-4 rounded md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 gap-y-2 md:gap-y-0">
-                  <li>
-                    <a
-                      href="/login"
-                      className="block hover:bg-blue hover:text-green md:bg-none py-2 px-3 rounded  md:bg-transparent md:hover:text-green transition-colors border-blue md:border-none"
-                      aria-current="page"
-                    >
-                      Login
-                    </a>
-                  </li>
-                </ul>
-              )}
+              ) : null}
               {/* <!-- Dropdown menu --> */}
               <div
                 className="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow"
@@ -59,16 +47,16 @@ export function Nav() {
               >
                 <div className="px-4 py-3">
                   <span className="block text-sm text-blue font-bold">
-                    Bonnie Green
+                    Ammar Ahmad
                   </span>
                   <span className="block text-sm  text-blue truncate">
-                    email@example.com
+                    Ammar@example.com
                   </span>
                 </div>
                 <ul className="py-2" aria-labelledby="user-menu-button">
                   <li className="p-1">
                     <a
-                      href="/test/penetration"
+                      href="/dashboard"
                       className="block px-4 py-2 text-sm text-black hover:bg-blue hover:text-green transition-colors rounded-default"
                     >
                       Dashboard
@@ -151,7 +139,7 @@ export function Nav() {
                   {!Cookies.get("accessToken") ? (
                     <a
                       href="/login"
-                      className="block hover:bg-blue hover:text-green md:bg-none py-2 px-3 rounded  md:bg-transparent md:hover:text-green transition-colors border-blue md:border-none"
+                      className="block border hover:bg-blue hover:text-green md:bg-none py-2 px-3 rounded  md:bg-transparent md:hover:text-green transition-colors border-blue md:border-none"
                       aria-current="page"
                     >
                       Login
