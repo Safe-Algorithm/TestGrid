@@ -17,7 +17,10 @@ body {
   padding-bottom: 10px;
   font-weight: bold;
 }
-
+.activeSidebar {
+  background-color: #0867ff;
+  color: white;
+}
 @media only screen and (min-width: 1024px) {
   .leading-12 {
     line-height: 3rem !important;

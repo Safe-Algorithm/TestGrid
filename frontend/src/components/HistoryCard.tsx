@@ -22,7 +22,7 @@ export default function HistoryCard({
 
   const handleCardClick = () => {
     // Navigate to the result page with the test ID
-    navigate(`/test/result/${id}`);
+    navigate(`/dashboard/test/penetration/network/result/${id}`);
   };
   return (
     <ul
@@ -34,11 +34,11 @@ export default function HistoryCard({
         <Paragraph className="font-bold text-blue">{name}</Paragraph>
       </li>
       <li className="flex">
-        <img src={TestStatusIcon} className="mr-2" />
+        <img src={TestStatusIcon} className="mr-2 w-5" />
         <Paragraph className="font-bold text-blue">{status}</Paragraph>
       </li>
       <li className="flex">
-        <img src={DateIcon} className="mr-2" />
+        <img src={DateIcon} className="mr-2 w-5" />
         <Paragraph className="font-bold text-blue">{beautifiedDate}</Paragraph>
       </li>
       <li className="flex">
